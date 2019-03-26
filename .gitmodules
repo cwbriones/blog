@@ -1,0 +1,9 @@
+[submodule "themes/minimal"]
+	path = themes/minimal
+	url = https://github.com/calintat/minimal.git
+[submodule "themes/hugo-flex"]
+	path = themes/hugo-flex
+	url = https://github.com/de-souza/hugo-flex
+[submodule "themes/temple"]
+	path = themes/temple
+	url = https://github.com/aos/temple.git

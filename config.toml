@@ -1,0 +1,28 @@
+baseURL = "http://briones.io/"
+languageCode = "en-us"
+title = "christian's blog."
+theme = "temple"
+
+# Temple
+pygmentsStyle = "friendly"
+pygmentsCodeFences = true
+
+[params]
+  # Enables the topmenu, which pulls from categories
+  topmenu = "categories"
+
+  # Enables custom date format (optional, the default is MM-DD-YYYY)
+  # For reference to date and time templating, see:
+  # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+  dateformatpretty = "2006-01-02"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[author]
+  name = "Christian Briones"
+  github = "cwbriones"
+  email = "christian@briones.io"
+  # gaid = "Your Google Analytics ID"
+  twitter = "cwbriones"
