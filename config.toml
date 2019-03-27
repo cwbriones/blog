@@ -1,7 +1,7 @@
 baseURL = "https://briones.io/"
 languageCode = "en-us"
 title = "christian's blog."
-theme = "temple"
+# theme = "temple"
 
 # Temple
 pygmentsStyle = "friendly"

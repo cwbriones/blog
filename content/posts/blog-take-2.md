@@ -2,6 +2,7 @@
 title: "Blog - Take Two"
 date: 2019-03-24T18:13:29-07:00
 draft: false
+description: "or: how I stopped worrying and learned to love the blog"
 tags:
 - meta
 ---
