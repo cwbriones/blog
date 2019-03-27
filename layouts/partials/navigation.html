@@ -1,0 +1,12 @@
+<nav class="header-nav">
+  {{ $baseurl := .Site.BaseURL }}
+  <div>
+    <a href="{{$baseurl}}">{{ .Site.Title }}</a>
+    <div class="title-highlight"></div>
+  </div>
+  <ul class="nav-list">
+    <li>
+      <a href="{{ $baseurl }}about/">About</a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Title }}">
+  <meta name="author" content="{{ .Site.Author.name }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon"
+  {{ if .Site.Params.favicon }}
+    href="{{ .Site.Params.favicon | absURL }}"
+  {{ else }}
+    href="{{ .Site.BaseURL }}img/favicon.ico"
+  {{ end }}
+  type="image/x-icon">
+
+  {{ $options := (dict "targetPath" "main.css" "outputStyle" "compressed" "enableSourceMap" true) }}
+  {{ $style := resources.Get "scss/main.scss" | resources.ToCSS $options | resources.Fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
+
+  <!-- RSS Feed -->
+  {{ if .RSSLink }}
+  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} Feed" />
+  {{ end }}
+
+  {{ .Hugo.Generator }}
+</head>
+<body>

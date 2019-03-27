@@ -1,0 +1,49 @@
+{{ partial "header.html" . }}
+
+{{ partial "navigation.html" . }}
+
+<div class="container">
+  <div>
+    {{ .Content }}
+  </div>
+  <div class="post">
+  <header>
+    <h1>[recent posts]</h1>
+  </header>
+  <ul class="post-list">
+  {{ $baseurl := .Site.BaseURL }}
+  {{ range $name, $page := .Site.RegularPages }}
+    {{ if eq .Type "posts" }}
+    <li
+    {{ if $page.Draft }} class="draft" {{ end }}
+    >
+      <h2>
+        <a href="{{ .Permalink }}">
+          {{ if $page.Draft }}[DRAFT] {{end}}{{ $page.Title }}
+        </a>
+      </h2>
+      {{ if $page.Params.description }}
+      <p>{{ $page.Params.description | markdownify }}</p>
+      {{ end }}
+      <div class="meta">
+        <time datetime="{{ $page.Date }}">
+          {{ $page.Date.Format "02 Jan 2006" }}
+        </time>
+        <ul class="tags">
+        {{ with $page.Params.tags }}
+          {{ range $page.Params.tags}}
+          <li class="tag">
+            <a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a>
+          </li>
+          {{ end }}
+        {{ end }}
+        </ul>
+      </div>
+    </li>
+    {{ end }}
+  {{ end }}
+  </ul>
+  </div>
+</div>
+
+{{ partial "footer.html" . }}

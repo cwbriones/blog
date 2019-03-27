@@ -2,7 +2,6 @@
 date: 2017-04-02 22:01:49
 title: On Duck-Typing
 draft: false
-description: "Have any of you even __seen__ a duck before?"
 tags:
 - software
 ---

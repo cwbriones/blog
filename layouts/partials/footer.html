@@ -1,0 +1,35 @@
+<hr>
+<footer>
+  <ul class="footer-nav">
+    <li>
+    <p>
+    {{ if .Site.Author.name }}
+    © {{ .Site.Author.name }} – 
+    {{ end }}
+    Powered by <a href="https://gohugo.io/">Hugo</a> + <a href="https://pages.github.com/">Github Pages</a></p>
+    </li>
+    {{ if .Site.Author.email }}
+    <li>
+      <a href="mailto:{{ .Site.Author.email }}">
+        {{ partial "fontawesome.html" "envelope" }}
+      </a>
+    </li>
+    {{ end }}
+
+    {{ if .Site.Author.github }}
+    <li>
+      <a href="https://github.com/{{ .Site.Author.github }}">
+        {{ partial "fontawesome.html" "github" }}
+      </a>
+    </li>
+    {{ end }}
+    {{ if .Site.Author.twitter }}
+    <li>
+      <a href="https://github.com/{{ .Site.Author.twitter }}">
+        {{ partial "fontawesome.html" "twitter" }}
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</footer>
+</body>
