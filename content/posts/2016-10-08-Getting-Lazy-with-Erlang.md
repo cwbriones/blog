@@ -44,7 +44,7 @@ get something like what we have in Haskell?
 
 If we take a quick look around, it's apparent that functions themselves are lazy by nature - they let you pass around blocks of code as data. Wrapping a value in a lambda only evaluates that value when the lambda is called:
 
-```
+```plain
 1> io:format("Hey!\n").
 Hey!
 ok
@@ -90,7 +90,7 @@ naturals(N)
 
 Easy! The stream of natural numbers starting at `N` is followed by the stream starting at `N + 1`. Notice that our `naturals/1` stream is _infinite_, as it unconditionally refers to itself. Since our recursive call is wrapped up neatly in a `fun`, we can express this definition without fear of an infinite loop. We can check that it works as expected in the repl.
 
-```
+```plain
 1> c(streams).
 {ok, streams}
 2> Ns = naturals().
@@ -159,7 +159,7 @@ to_list(Stream, Acc) ->
 
 However this alone isn't enough to perform our computation. Up until now our stream has been infinite. If we called `to_list` on our stream now, we'd continue `yield`ing elements until we ran out of memory.
 
-```
+```plain
 1> streams:to_list(streams:naturals()).
 (Hangs forever...)
 ```
