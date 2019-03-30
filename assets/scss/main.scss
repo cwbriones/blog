@@ -2,7 +2,7 @@ $content-font: -apple-system, BlinkMacSystemFont, 'Source Sans Pro', 'Helvetica 
 
 $text: #222;
 
-$accent-light: #d3e5ff;
+$accent-light: #e3edfc;
 $accent-medium: #b7d5ff;
 $accent-bold: #3881ef;
 
@@ -172,21 +172,29 @@ p, li {
 }
 
 // Markdown quotes
-aside, blockquote {
-    border-style: solid;
-    border-width: 0 0 0 10px;
+blockquote {
+    font-style: italic;
+    color: mix($accent-light, $text, 20%);
     background-color: $accent-light;
-    border-left-color: $accent-medium;
+    border-left: $accent-bold solid 4px;
     padding: 1em;
     margin: 0;
 }
 
 // Code blocks
 pre {
-    border-radius: 5px;
     line-height: 1.5555em;
     padding: 2em;
     overflow-x: auto;
+}
+
+// Notices
+aside {
+    border: $accent-medium dashed 2px;
+    border-radius: 1px;
+    background: $accent-light;
+    padding: 1em;
+    color: $accent-bold;
 }
 
 .footnote-ref {

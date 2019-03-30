@@ -205,7 +205,7 @@ yield([]) -> halt.
 
 In this way, we can think of lists as their own type of stream. This is why we included the level of indirection with `yield`. It acts as a simple interface - by adding additional function heads we can extend the notion of a stream to any iterable structure. This is quite powerful, as it lets us mix-and-match these structures whenever we want. [^enumerable]
 
-## Until next time"
+## Until next time
 
 We've seen that while infinite streams are certainly a useful tool to have as a first-class feature, they're easily expressible through the power of simple functions. There are more complex examples of stream transformers and combinators available, but I'll leave those for another time. If you're curious or want to play around with them right now, all of the above (and more!) is available [on my github](https://github.com/cwbriones/streams).
 

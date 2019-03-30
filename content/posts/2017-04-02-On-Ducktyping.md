@@ -6,7 +6,9 @@ tags:
 - software
 ---
 
-**Note: The following is written with Python in mind, but the idea just as easily applies to something like JavaScript with a s/isinstance/instanceof/g, among other things.**
+<aside>
+The following is written with Python in mind, but the idea just as easily applies to something like JavaScript with a s/isinstance/instanceof/g, among other things.
+</aside>
 
 Let's say you're writing a database pooling service [^1] in Python, and have something like this:
 

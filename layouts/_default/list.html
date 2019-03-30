@@ -5,7 +5,7 @@
     {{ if eq .Kind "home" }}
       {{ .Title }}
     {{ else }}
-      Filed under {{ .Title | lower }}
+      [{{ .Title | lower }}]
     {{ end }}
   </h1>
   <div>
@@ -16,7 +16,7 @@
 {{ $baseurl := .Site.BaseURL }}
 {{ range $name, $page := .Data.Pages }}
   {{ if eq .Type "posts" }}
-  <li>
+  <li class="mini-post">
     <h2>
       <a href="{{ .Permalink }}">
         {{ if $page.Draft }}[DRAFT] {{end}}{{ $page.Title }}
