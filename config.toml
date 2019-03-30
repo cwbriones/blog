@@ -2,14 +2,13 @@ baseURL = "https://briones.io/"
 languageCode = "en-us"
 title = "christian's blog"
 
-# Temple
 pygmentsStyle = "friendly"
 pygmentsCodeFences = true
 
-[params]
-  # Enables the topmenu, which pulls from categories
-  topmenu = "categories"
+[frontmatter]
+lastmod = ["lastmod", ":git", ":default"]
 
+[params]
   # Enables custom date format (optional, the default is MM-DD-YYYY)
   # For reference to date and time templating, see:
   # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
@@ -17,7 +16,6 @@ pygmentsCodeFences = true
 
 [taxonomies]
   tag = "tags"
-  category = "categories"
 
 [author]
   name = "Christian Briones"

@@ -1,39 +1,29 @@
-{{ partial "header.html" . }}
-
-{{ partial "navigation.html" . }}
+{{ define "main" }}
 
 {{ $about := (eq .Page.File.BaseFileName "about") }}
-
-<div>
-  <article class="post">
-    <header>
-      <h1>{{ if .Draft }}[DRAFT] {{end}}{{ .Title }}</h1>
-      {{ if not $about }}
-      <div class="post-meta">
-        <time datetime="{{ .Date }}">
-          {{ .Date.Format "02 Jan 2006" }}
-        </time>
-        {{ $baseurl := .Site.BaseURL }}
-        <ul class="tags">
-        {{ if isset .Params "tags" }}
-          {{ range .Params.tags}}
-          <li class="tag">
-            <a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a>
-          </li>
-          {{ end }}
-        {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-    </header>
-    <div class="post-content">
-      {{ if (and (ne .Lastmod .Date) (not $about)) }}
-      <b>Updated: {{ .Lastmod.Local.Format "2 Jan 2006 15:04" }}</b>
-      {{ end }}
-      {{ .Content }}
-      <a href="#" id="gototop-btn">↑↑</a>
+<article class="post">
+  <header class="post-header">
+    <h1>{{ if .Draft }}[DRAFT] {{end}}{{ .Title }}</h1>
+    {{ if not $about }}
+    <div class="post-meta">
+      <time datetime="{{ .Date }}">
+        {{ .Date.Format "02 Jan 2006" }}
+      </time>
+      {{ partial "tags.html" . }}
     </div>
-  </article>
-</div>
+    {{ end }}
+  </header>
+  <div class="post-content">
+    {{ if (and (ne .Lastmod .Date) (not $about)) }}
+    <b>Updated: {{ .Lastmod.Local.Format "2 Jan 2006" }}</b>
+    {{ end }}
+    {{ .Content }}
+    {{ if not $about }}
+    <div class="pull-right">
+      <a href="#">↑↑</a>
+    </div>
+    {{ end }}
+  </div>
+</article>
 
-{{ partial "footer.html" . }}
+{{ end }}

@@ -1,51 +1,39 @@
-{{ partial "header.html" . }}
+{{ define "main" }}
 
-{{ partial "navigation.html" . }}
-
-<div>
-  <header>
-    <h1>
-      {{ if eq .Type "posts" }}
-        {{ .Title | lower }}.
-      {{ else }}
-        [{{ .Title | lower }}]
-      {{ end }}
-    </h1>
-  </header>
-  <div>
-    {{ .Content }}
-  </div>
-  <ul class="post-list">
-  {{ $baseurl := .Site.BaseURL }}
-  {{ range $name, $page := .Data.Pages }}
-    {{ if eq .Type "posts" }}
-    <li>
-      <h2>
-        <a href="{{ .Permalink }}">
-          {{ if $page.Draft }}[DRAFT] {{end}}{{ $page.Title }}
-        </a>
-      </h2>
-      {{ if $page.Params.description }}
-      <p>{{ $page.Params.description | markdownify }}</p>
-      {{ end }}
-      <div>
-        <time datetime="{{ $page.Date }}">
-          {{ $page.Date.Format "02 Jan 2006" }}
-        </time>
-        <ul class="tags">
-        {{ with $page.Params.tags }}
-          {{ range $page.Params.tags}}
-          <li class="tag">
-            <a href="{{ $baseurl }}tags/{{ . | urlize }}">{{ . }}</a>
-          </li>
-          {{ end }}
-        {{ end }}
-        </ul>
-      </div>
-    </li>
+<header class="post-header">
+  <h1>
+    {{ if eq .Kind "home" }}
+      {{ .Title }}
+    {{ else }}
+      Filed under {{ .Title | lower }}
     {{ end }}
+  </h1>
+  <div>
+    {{ .Description }}
+  </div>
+</header>
+<ul class="mini-post-list">
+{{ $baseurl := .Site.BaseURL }}
+{{ range $name, $page := .Data.Pages }}
+  {{ if eq .Type "posts" }}
+  <li>
+    <h2>
+      <a href="{{ .Permalink }}">
+        {{ if $page.Draft }}[DRAFT] {{end}}{{ $page.Title }}
+      </a>
+    </h2>
+    {{ if $page.Description }}
+    <p>{{ $page.Description | markdownify }}</p>
+    {{ end }}
+    <div class="post-meta">
+      <time datetime="{{ $page.Date }}">
+        {{ $page.Date.Format "02 Jan 2006" }}
+      </time>
+      {{ partial "tags.html" $page }}
+    </div>
+  </li>
   {{ end }}
-  </ul>
-</div>
+{{ end }}
+</ul>
 
-{{ partial "footer.html" . }}
+{{ end }}

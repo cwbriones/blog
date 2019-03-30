@@ -1,11 +1,14 @@
 $content-font: -apple-system, BlinkMacSystemFont, 'Source Sans Pro', 'Helvetica Neue', Helvetica, sans-serif;
 
 $text: #222;
-$accent: #3881ef;
+
+$accent-light: #d3e5ff;
+$accent-medium: #b7d5ff;
+$accent-bold: #3881ef;
 
 body {
-    width: 700px;
-    max-width: calc(700px + (2 * 1.77778em));
+    width: 600px;
+    max-width: calc(600px + (2 * 1.77778em));
     margin: 0 auto;
     padding: 0 1.77778em;
     background-color: #fff;
@@ -17,6 +20,10 @@ body {
     line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
+}
+
+img {
+    width: 100%;
 }
 
 time {
@@ -36,10 +43,11 @@ time {
     }
 }
 
-// #gototop-btn {
-//     padding: 0;
-//     float: right;
-// }
+.pull-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
 
 footer {
     display: flex;
@@ -63,23 +71,18 @@ a {
     color: $text;
     text-decoration: none;
     &:hover {
-        color: $accent;
+        color: $accent-bold;
         transition: 0.2s;
     }
 }
 
 // Links within content
 p a {
-    color: $accent;
+    color: $accent-bold;
     &:hover {
         text-decoration: underline;
         transition: 0.5s;
     }
-}
-
-
-.draft {
-    opacity: 0.6;
 }
 
 h1 {
@@ -99,14 +102,14 @@ h2 {
 
 .tag {
     a {
-        color: $accent
+        color: $accent-bold
     }
     &:hover {
-        background-color: #b7d5ff;
+        background-color: $accent-medium;
         transition: 0.2s;
     }
     display: inline;
-    background-color: #d3e5ff;
+    background-color: $accent-light;
     padding: 0.4em 0.5em;
     margin: 0.5em;
     border-radius: 2px;
@@ -114,27 +117,37 @@ h2 {
 }
 
 #sitename .highlight {
-    background-color: $accent;
+    background-color: $accent-bold;
     height: 4px;
-}
-
-.post {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .post-meta {
     padding: 0;
 }
 
-.post-list {
+.post-header h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-header .post-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mini-post-list {
     list-style: none;
     padding: 0;
     padding-top: 1px; // ??
     > li {
         padding-bottom: 0.5em;
     }
+}
+
+.post-content {
+    width: 100%;
 }
 
 // Inline code references
@@ -151,8 +164,8 @@ p, li {
 aside, blockquote {
     border-style: solid;
     border-width: 0 0 0 10px;
-    border-left-color: #b7d5ff;
-    background-color: #d3e5ff;
+    background-color: $accent-light;
+    border-left-color: $accent-medium;
     padding: 1em;
     margin: 0;
 }

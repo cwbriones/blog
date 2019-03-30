@@ -1,9 +1,10 @@
 ---
-date: 2016-10-08 21:32:57
+date: 2016-10-08T21:32:57-07:00
 title: Getting Lazy with Erlang
 draft: false
 tags:
 - software
+lastmod: 2019-03-28T12:00:00-07:00
 ---
 
 I've recently been playing around with Haskell again, and not only am I impressed by how natural recursive structures seem within the language - the ease with which you define them is even more impressive.
@@ -40,7 +41,7 @@ In my day-to-day I'm programming Erlang, which doesn't have the concept of lazy-
 We can't even express the original list of integers with erlang's built-in lists. So how can we
 get something like what we have in Haskell?
 
-## Funs as contexts
+{{< h "Funs as Contexts" >}}
 
 If we take a quick look around, it's apparent that functions themselves are lazy by nature - they let you pass around blocks of code as data. Wrapping a value in a lambda only evaluates that value when the lambda is called:
 
@@ -65,7 +66,7 @@ You can think of streams as specific types of functions. They need to return the
 
 If the stream returns `halt`, we know we've reached the end. Otherwise we get our next value along with a new stream for continuing iteration.
 
-## Building our first stream
+{{< h "Building our first stream" >}}
 
 First of all, let's wrap up actual function calls to our stream with the function `yield/1'.
 
@@ -105,7 +106,7 @@ Easy! The stream of natural numbers starting at `N` is followed by the stream st
 
 As you can see on the right-hand side, we are indeed getting back `0, 1, 2` as we repeatedly call `yield`.
 
-## Stream Transformers
+{{< h "Stream Transformers" >}}
 
 Now that we have our infinite stream of integers, we need to be able to transform this stream in a list-like fashion. Erlang provides higher-order functions such as `lists:map/2` and `lists:filter/2` to manipulate and transform its lists. We'll define the same for streams.
 
@@ -142,7 +143,7 @@ Unlike `map`, filter can contain less elements than the original stream, which m
 
 If it's false, however, we need to call `do_filter` which will evaluate __immediately__. This should be expected - after all, the whole point of lazy evaluation is to only perform computation when needed, and we need to continue to the next element.
 
-## Forcing evalution
+{{< h "Forcing Evaluation" >}}
 
 Now that we can define and transform our stream, we need to be able to evaluate it. Otherwise it wouldn't serve much use, would it? We'll define a helper, `to_list/1` that repeated `yield`s elements into a list until we reach the end of the stream:
 
@@ -191,7 +192,7 @@ streams:to_list(Take10).
 %% > [1,9,25,49,81,121,169,225,289,361]
 ```
 
-## Yielding from lists
+{{< h "Yielding from Lists" >}}
 
 As a bonus, we can easily add a case to `yield/1` that lets us use streams and lists interchangeably.
 
@@ -204,7 +205,7 @@ yield([]) -> halt.
 
 In this way, we can think of lists as their own type of stream. This is why we included the level of indirection with `yield`. It acts as a simple interface - by adding additional function heads we can extend the notion of a stream to any iterable structure. This is quite powerful, as it lets us mix-and-match these structures whenever we want. [^enumerable]
 
-## Until next time
+## Until next time"
 
 We've seen that while infinite streams are certainly a useful tool to have as a first-class feature, they're easily expressible through the power of simple functions. There are more complex examples of stream transformers and combinators available, but I'll leave those for another time. If you're curious or want to play around with them right now, all of the above (and more!) is available [on my github](https://github.com/cwbriones/streams).
 

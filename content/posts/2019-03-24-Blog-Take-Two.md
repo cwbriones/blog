@@ -13,4 +13,4 @@ We can't all be wordsmiths.
 
 What this place should be is a dumping ground for my thoughts - well sculpted or otherwise. So look forward to a grab bag of my interests – I don't want to pin this place down to any single facet just yet.
 
-_Christian_
+___Christian___

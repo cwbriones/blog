@@ -1,0 +1,14 @@
+<!-- Create a heading with an anchor link. -->
+<!-- h(title, level=2) -->
+{{ $title := .Get 0 }}
+{{ $id := $title | urlize }}
+{{ with .Get 1 }}
+  <h{{.}} id="{{ $id }}">
+    <a href="#{{ $id }}">{{ $title }}</a>
+  </h{{.}}>
+{{ else }}
+  <h2 id="{{ $id }}">
+    <a href="#{{ $id }}">{{ $title }}</a>
+  </h2>
+{{ end }}
+
