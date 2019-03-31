@@ -4,8 +4,7 @@ title: Why hello there!
 draft: false
 ---
 
-I'm Christian Briones, I build things at 
-<a href="http://dropbox.com">Dropbox</a>.
+I'm Christian Briones, I build things at [Dropbox](http://dropbox.com).
 
 I'm an avid climber, homebrewer, and [rustacean](http://rust-lang.org).
 

@@ -98,11 +98,16 @@ p a {
 h1 {
     font-weight: 800;
     font-size: 2em;
-    line-height: 1em;
+    line-height: 1.25em;
+}
+
+.post-title {
+    text-align: center;
 }
 
 h2 {
     font-weight: bold;
+    line-height: 1.25em;
 }
 
 .tags {
@@ -134,12 +139,6 @@ h2 {
 
 .post-meta {
     padding: 0;
-}
-
-.post-header h1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .post-header .post-meta {

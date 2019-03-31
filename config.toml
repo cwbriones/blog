@@ -5,6 +5,8 @@ title = "christian's blog"
 pygmentsStyle = "friendly"
 pygmentsCodeFences = true
 
+publishDir = "build"
+
 [frontmatter]
 lastmod = ["lastmod", ":git", ":default"]
 

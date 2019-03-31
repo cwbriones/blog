@@ -1,13 +1,22 @@
 #!/bin/bash
 
-echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
+set -euo pipefail
+IFS=$'\n\t'
+
+export HUGO_ENV="production"
+SITEDIR=public
+
+echo -e "\033[0;32mCleaning old build in $SITEDIR\033[0m"
+
+rm -rf $SITEDIR/*
 
 # Build the project.
-hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
+hugo -d $SITEDIR
 
-# Go To Public folder
-cd public
-# Add changes to git.
+cd $SITEDIR
+
+echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
+
 git add .
 
 # Commit changes.
