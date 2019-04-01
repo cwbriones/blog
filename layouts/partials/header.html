@@ -29,6 +29,17 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700">
 
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  {{ if eq (getenv "HUGO_ENV") "production" }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{.Site.GoogleAnalytics}}');
+  </script>
+  {{ end }}
+
   <!-- RSS Feed -->
   {{ if .RSSLink }}
   <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} Feed" />

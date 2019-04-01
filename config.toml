@@ -7,6 +7,8 @@ pygmentsCodeFences = true
 
 publishDir = "build"
 
+googleAnalytics = "UA-137386323-1"
+
 [frontmatter]
 lastmod = ["lastmod", ":git", ":default"]
 
@@ -23,5 +25,4 @@ lastmod = ["lastmod", ":git", ":default"]
   name = "Christian Briones"
   github = "cwbriones"
   email = "christian@briones.io"
-  # gaid = "Your Google Analytics ID"
   twitter = "cwbriones"
