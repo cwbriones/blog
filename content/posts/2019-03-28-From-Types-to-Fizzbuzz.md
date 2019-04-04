@@ -9,50 +9,27 @@ tags:
 - software
 ---
 
-For each number N from 1 to 100, if N is...
+{{< h "Introduction" >}}
 
-* ...disible by 3, output "Fizz".
-* ...divisible by 5, output "Buzz".
-* ...divisible by both 3 and 5, output "FizzBuzz".
-* ...otherwise, output the number itself.
+Fizzbuzz is an (in?)famous programming interview question whose description is actually fairly straightforward:
 
-# Baby Steps
+> For each number from N=1 to N=100, if N is&hellip;
+>
+> * ...disible by 3, output "Fizz".
+> * ...divisible by 5, output "Buzz".
+> * ...divisible by both 3 and 5, output "FizzBuzz".
+> * ...otherwise, output the number itself.
 
-First we define the natural numbers by the usual construction
-```rust
-struct Zero; // ahem, zero.
-struct S<N>; // The "successor" of N aka N + 1
-```
+A straighforward problem often leads to a straighforward solution - but of course, we're not straightforward. That'd be too simple, that'd be – __boring__.
 
-We hit our first roadblock, but `rustc` is quite helpful
+{{< h "Baby Steps" >}}
 
-```
-error[E0392]: parameter `N` is never used
- --> src/lib.rs:2:10
-  |
-2 | struct S<N>;
-  |          ^ unused type parameter
-  |
-  = help: consider removing `N` or using a marker such as `std::marker::PhantomData`
-```
+We'll require numbers to do this, but we're no freeloaders. Over here we serve our own hand-crafted artisinal numbers.
 
-Let's go ahead and fix this.
+Let's go ahead and do just that.
+Add a few helpful aliases:
 
-```rust
-use std::marker::PhantomData;
+{{< h "From a walk to a sprint" >}}
 
-struct S<N>(PhantomData<N>); // The "successor" of N aka N + 1
-```
-
-Add a few helpful aliases...
-
-```rust
-type N1 = S<Zero>;
-type N2 = S<N1>;
-type N3 = S<N2>;
-type N4 = S<N3>;
-type N5 = S<N4>;
-```
-
-How quickly we're moving along!
-
+It's a __long__ ways to 100 down this route, so let's forge another path.
+<p>We can do better.</p>
